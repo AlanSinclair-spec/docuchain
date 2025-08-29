@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DocuChain
+
+**Vendor Document Management & Compliance Tracking SaaS**
+
+DocuChain streamlines vendor document management and compliance tracking for businesses. Never miss an expiry date again with automated alerts and comprehensive compliance scoring.
+
+## Features
+
+- **Vendor Management**: Complete vendor lifecycle management with risk scoring
+- **Document Tracking**: Upload, organize, and track vendor documents with expiry alerts
+- **Compliance Monitoring**: Real-time compliance scoring and automated alerts
+- **Stripe Billing**: Integrated subscription billing with Foundation ($79/mo) and Professional ($249/mo) plans
+- **Multi-tenant Architecture**: Secure organization-based data isolation
+- **Modern UI**: Built with Next.js 14, TypeScript, and Tailwind CSS
+
+## Tech Stack
+
+- **Frontend**: Next.js 14 (App Router), TypeScript, Tailwind CSS
+- **Backend**: Supabase (Auth, Database, Storage)
+- **Payments**: Stripe
+- **UI Components**: Radix UI, shadcn/ui
+- **Deployment**: Vercel
 
 ## Getting Started
 
-First, run the development server:
-
+1. **Clone the repository**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/AlanSinclair-spec/docuchain.git
+cd docuchain
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Install dependencies**
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. **Set up environment variables**
+Copy `.env.example` to `.env.local` and configure your Supabase and Stripe keys.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. **Run the development server**
+```bash
+npm run dev
+```
 
-## Learn More
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-To learn more about Next.js, take a look at the following resources:
+## Setup Guide
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+See `SETUP.md` for detailed configuration instructions for Supabase and Stripe integration.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT License
