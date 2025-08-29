@@ -3,8 +3,11 @@ import { stripe } from '@/lib/stripe'
 import { createClient } from '@/lib/supabase/server'
 import { cookies } from 'next/headers'
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   try {
+    if (!stripe) {
+      return NextResponse.json({ error: 'Stripe not configured' }, { status: 500 })
+    }
     const supabase = createClient()
     const { data: { user }, error: userError } = await supabase.auth.getUser()
 

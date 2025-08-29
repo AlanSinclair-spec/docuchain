@@ -7,17 +7,19 @@ export const getStripe = () => {
 }
 
 // Server-side Stripe
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2025-08-27.basil',
-  typescript: true,
-})
+export const stripe = process.env.STRIPE_SECRET_KEY 
+  ? new Stripe(process.env.STRIPE_SECRET_KEY, {
+      apiVersion: '2025-08-27.basil',
+      typescript: true,
+    })
+  : null
 
 // Subscription plans
 export const SUBSCRIPTION_PLANS = {
   foundation: {
     name: 'Foundation',
     price: 79,
-    priceId: process.env.STRIPE_PRICE_FOUNDATION!,
+    priceId: process.env.STRIPE_PRICE_FOUNDATION || '',
     features: [
       'Up to 20 vendors',
       'Basic document management',
@@ -29,7 +31,7 @@ export const SUBSCRIPTION_PLANS = {
   professional: {
     name: 'Professional',
     price: 249,
-    priceId: process.env.STRIPE_PRICE_PROFESSIONAL!,
+    priceId: process.env.STRIPE_PRICE_PROFESSIONAL || '',
     features: [
       'Unlimited vendors',
       'Advanced compliance tracking',
