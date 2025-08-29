@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -14,16 +14,10 @@ import { toast } from 'sonner'
 export default function BillingPage() {
   const { user } = useUser()
   const [loading, setLoading] = useState<string | null>(null)
-  const [profile, setProfile] = useState<any>(null)
+  const [profile, setProfile] = useState<{ stripe_customer_id?: string; subscription_status?: string; subscription_plan?: string } | null>(null)
   const supabase = createClient()
 
-  useEffect(() => {
-    if (user) {
-      fetchProfile()
-    }
-  }, [user])
-
-  const fetchProfile = async () => {
+  const fetchProfile = useCallback(async () => {
     if (!user) return
 
     const { data } = await supabase
@@ -33,7 +27,11 @@ export default function BillingPage() {
       .single()
 
     setProfile(data)
-  }
+  }, [user, supabase])
+
+  useEffect(() => {
+    fetchProfile()
+  }, [fetchProfile])
 
   const handleSubscribe = async (planType: string) => {
     if (!user) {
