@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation'
 import Link from 'next/link'
 
 export default async function Login() {
-  const signIn = async (formData: FormData) => {
+  const handleLogin = async (formData: FormData): Promise<void> => {
     'use server'
 
     const email = formData.get('email') as string
@@ -16,7 +16,8 @@ export default async function Login() {
     })
 
     if (error) {
-      return { error: error.message }
+      console.error('Login error:', error.message)
+      return
     }
 
     return redirect('/dashboard')
@@ -36,7 +37,7 @@ export default async function Login() {
             </Link>
           </p>
         </div>
-        <form className="mt-8 space-y-6" action={signIn}>
+        <form className="mt-8 space-y-6" action={handleLogin}>
           <input type="hidden" name="remember" value="true" />
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
