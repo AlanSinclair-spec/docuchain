@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { DocumentUploadForm } from '@/components/forms/document-upload-form'
 
 export default async function DocumentUploadPage() {
-  const supabase = createClient()
+  const supabase = await createClient()
   
   // Get vendors for the dropdown
   const { data: vendors } = await supabase

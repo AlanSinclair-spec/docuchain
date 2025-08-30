@@ -8,7 +8,7 @@ export async function POST(req: Request) {
     if (!stripe) {
       return NextResponse.json({ error: 'Stripe not configured' }, { status: 500 })
     }
-    const supabase = createClient()
+    const supabase = await createClient()
     const { data: { user }, error: userError } = await supabase.auth.getUser()
 
     if (userError || !user) {

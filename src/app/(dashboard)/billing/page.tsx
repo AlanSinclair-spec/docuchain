@@ -15,7 +15,7 @@ export default function BillingPage() {
   const { user } = useUser()
   const [loading, setLoading] = useState<string | null>(null)
   const [profile, setProfile] = useState<{ stripe_customer_id?: string; subscription_status?: string; subscription_plan?: string } | null>(null)
-  const supabase = createClient()
+  const supabase = await createClient()
 
   const fetchProfile = useCallback(async () => {
     if (!user) return

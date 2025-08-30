@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { ComplianceStatus } from '@/components/dashboard/compliance-status'
 
 export default async function CompliancePage() {
-  const supabase = createClient()
+  const supabase = await createClient()
   
   // Get compliance data
   const { data: vendors } = await supabase

@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { VendorGrid } from '@/components/dashboard/vendor-grid'
 
 export default async function VendorsPage() {
-  const supabase = createClient()
+  const supabase = await createClient()
   
   const { data: vendors, error } = await supabase
     .from('vendors')

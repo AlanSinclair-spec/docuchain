@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { DocumentList } from '@/components/dashboard/document-list'
 
 export default async function DocumentsPage() {
-  const supabase = createClient()
+  const supabase = await createClient()
   
   const { data: documents, error } = await supabase
     .from('documents')

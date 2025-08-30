@@ -29,7 +29,7 @@ const MAX_FILE_SIZE = 10 * 1024 * 1024 // 10MB
 export function DocumentUpload({ vendorId, onUploadComplete, disabled }: DocumentUploadProps) {
   const [uploading, setUploading] = useState(false)
   const [progress, setProgress] = useState(0)
-  const supabase = createClient()
+  const supabase = await createClient()
 
   const onDrop = useCallback(async (acceptedFiles: File[]) => {
     if (acceptedFiles.length === 0 || disabled) return

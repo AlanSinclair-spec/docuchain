@@ -11,7 +11,7 @@ export default function SignUp() {
     const fullName = formData.get('fullName') as string
     const companyName = formData.get('companyName') as string
     
-    const supabase = createClient()
+    const supabase = await createClient()
 
     const { error } = await supabase.auth.signUp({
       email,

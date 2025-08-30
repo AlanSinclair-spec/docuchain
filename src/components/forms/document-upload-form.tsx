@@ -35,7 +35,7 @@ export function DocumentUploadForm({ vendors, documentTypes }: DocumentUploadFor
   const [expiryDate, setExpiryDate] = useState<string>('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const router = useRouter()
-  const supabase = createClient()
+  const supabase = await createClient()
 
   const handleDocTypeChange = (docTypeName: string) => {
     setSelectedDocType(docTypeName)

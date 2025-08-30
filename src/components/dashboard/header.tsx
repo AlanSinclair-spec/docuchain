@@ -19,7 +19,7 @@ import { createClient } from '@/lib/supabase/client'
 export function DashboardHeader() {
   const pathname = usePathname()
   const { user } = useUser()
-  const supabase = createClient()
+  const supabase = await createClient()
 
   const handleSignOut = async () => {
     await supabase.auth.signOut()

@@ -13,7 +13,7 @@ export async function GET(
       return NextResponse.json({ error: 'API key required' }, { status: 401 })
     }
 
-    const supabase = createClient()
+    const supabase = await createClient()
     
     // Validate API key
     const { data: org } = await supabase

@@ -7,7 +7,7 @@ export default function NewVendorPage() {
   const createVendor = async (formData: FormData) => {
     'use server'
 
-    const supabase = createClient()
+    const supabase = await createClient()
     const { data: { user } } = await supabase.auth.getUser()
 
     if (!user) {
